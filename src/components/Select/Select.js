@@ -12,13 +12,12 @@ const Select = ({ value, handleSelect, options, label }) => {
   };
 
   const renderOption = (option) => (
-    <li key={option.value} value={option.value} className="Select__option" onClick={() => onOptionClick(option)}>
+    <li key={option.value} className="Select__option" onClick={() => onOptionClick(option)}>
       {option.label}
     </li>
   );
 
   const selectedOption = options?.find((option) => option.value === value);
-  console.log("> ", selectedOption);
 
   return (
     <div className="Select">
