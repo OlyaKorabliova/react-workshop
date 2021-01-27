@@ -1,0 +1,9 @@
+.TextField {
+  &__label {
+    color: var(--text-gray);
+  }
+
+  &__value {
+    color: var(--text-light);
+  }
+}

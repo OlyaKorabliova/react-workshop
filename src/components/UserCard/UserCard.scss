@@ -1,0 +1,37 @@
+.UserCard {
+  background: #2a2a42;
+  border-radius: 12px;
+  margin: 12px;
+  width: 282px;
+
+  &__info {
+    padding: 24px 16px;
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__name {
+    color: var(--text-light);
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 13px;
+  }
+
+  &__tag {
+    margin-right: 8px;
+    background: #6c6c84;
+    border-radius: 24px;
+  }
+
+  &__textField {
+    margin-top: 24px;
+  }
+}

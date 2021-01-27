@@ -1,0 +1,80 @@
+.DetailedCharacter {
+  background: #0a0a28;
+  padding: 63px 120px;
+  min-height: calc(100vh - 126px);
+
+  &__links {
+    display: inline-block;
+    margin-bottom: 24px;
+  }
+
+  &__link {
+    color: var(--cta);
+    font-weight: bold;
+    font-size: 13px;
+    text-decoration: none;
+    display: inline-block;
+
+    &:not(:last-child)::after {
+      content: "";
+      width: 1px;
+      height: 13px;
+      margin: 0 8px;
+      background-color: var(--text-gray);
+      display: inline-block;
+      vertical-align: text-bottom;
+    }
+
+    &_active {
+      color: var(--text-gray);
+    }
+  }
+
+  &__card {
+    background: #2a2a42;
+    max-width: 1200px;
+    padding: 40px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 12px;
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: auto;
+  }
+
+  &__name {
+    font-size: 56px;
+    font-weight: bold;
+    color: var(--text-light);
+    flex-basis: 1 1 100%;
+    margin-top: 0;
+  }
+
+  &__textField {
+    margin-bottom: 16px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__mainInfo,
+  &__episodes {
+    flex: 0 1 50%;
+  }
+
+  &__mainInfo {
+    padding-right: 32px;
+  }
+
+  &__avatar {
+    margin-right: 40px;
+  }
+
+  &__image {
+    border-radius: 12px;
+  }
+}

@@ -1,0 +1,33 @@
+.Hero {
+  background-color: white;
+  color: #0a0a28;
+  font-size: 56px;
+  padding: 10px 0 64px 0;
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__logo {
+    padding: 0 48px;
+  }
+
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    max-width: 866px;
+    margin: 40px auto 0 auto;
+    justify-content: center;
+    & div:first-of-type {
+      margin-right: 40px;
+    }
+  }
+  &__search {
+    max-width: 866px;
+    font-size: 24px;
+    height: 86px;
+  }
+}

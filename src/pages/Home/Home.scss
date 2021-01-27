@@ -1,0 +1,25 @@
+.Home {
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 438px;
+    height: 129px;
+    margin: 0 48px;
+  }
+
+  &__filters {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  &__heroSearch {
+    max-width: 866px;
+    font-size: 24px;
+    height: 86px;
+  }
+}
