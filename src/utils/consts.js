@@ -6,6 +6,8 @@ import Alive from "../assets/icons/alive.svg";
 import Dead from "../assets/icons/dead.svg";
 import Genderless from "../assets/icons/genderless.svg";
 
+const SERVER_URL = 'https://rickandmortyapi.com/api';
+
 const statusOptions = [
   { value: "", label: "All" },
   { value: "Alive", label: "Alive" },
@@ -33,4 +35,4 @@ const statusTags = {
   Alive: { image: Alive, text: "Alive" },
 };
 
-export { statusOptions, genderOptions, genderTags, statusTags };
+export { statusOptions, genderOptions, genderTags, statusTags, SERVER_URL };

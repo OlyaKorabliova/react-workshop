@@ -3,25 +3,18 @@ import Home from "./pages/Home";
 import DetailedCharacter from "./pages/DetailedCharacter/";
 import Header from "./components/Header/Header";
 
-import characters from "./assets/json/stubCharacters.json";
-
 const Router = () => {
-  
-  const charactersList = characters.results;
-
-  const selectUserById = (id) => charactersList.find((user) => user.id === id);
-
   return (
     <Switch>
       <Route exact path="/search">
-        <Home characters={charactersList} />
+        <Home />
       </Route>
       <Route path="*">
         <div>
           <Header />
           <Switch>
             <Route exact path="/character/:id">
-              <DetailedCharacter selectCharacterInfo={selectUserById} />
+              <DetailedCharacter />
             </Route>
             <Route path="*">
               <Redirect to="/search" />

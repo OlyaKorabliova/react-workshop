@@ -1,22 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Hero from "../../components/Hero";
 import UserList from "../../components/UserList";
 import "./Home.scss";
+import { getCharacters } from "../../api";
 
-function Home({ characters }) {
+function Home() {
   const [characterName, setCharacterName] = useState("");
   const [characterGender, setGender] = useState("");
   const [characterStatus, setStatus] = useState("");
+  const [characters, setCharacters] = useState();
 
-  const filterCharacters = () =>
-    characters.filter(({ name, gender, status }) => {
-      const isMatchedByName = !characterName || name?.toLowerCase().includes(characterName.toLowerCase());
-      const isMatchedByGender = !characterGender || gender === characterGender;
-      const isMatchedByStatus = !characterStatus || status === characterStatus;
-
-      return isMatchedByName && isMatchedByGender && isMatchedByStatus;
+  useEffect(() => {
+    loadCharacters(undefined, {
+      ...(characterName && { name: characterName }),
+      ...(characterStatus && { status: characterStatus }),
+      ...(characterGender && { gender: characterGender })
     });
+  }, [characterName, characterGender, characterStatus]);
 
+  const loadCharacters = async (page = 1, params) => {
+    const items = await getCharacters(page, params);
+    setCharacters(items?.results);
+  }
+  
   return (
     <div className="Home">
       <Hero
@@ -27,7 +33,7 @@ function Home({ characters }) {
         status={characterStatus}
         setStatus={setStatus}
       />
-      <UserList characters={filterCharacters()} />
+      <UserList characters={characters} />
     </div>
   );
 }

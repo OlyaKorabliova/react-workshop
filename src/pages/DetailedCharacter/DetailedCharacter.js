@@ -1,14 +1,24 @@
+import { useEffect, useState, useCallback } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import PropTypes from "prop-types";
 import { genderTags, statusTags } from "../../utils";
 import Tag from "../../components/Tag";
 import TextField from "../../components/TextField";
+import { getCharacterById } from '../../api';
 
 import "./DetailedCharacter.scss";
 
-const DetailedCharacter = ({ selectCharacterInfo }) => {
+const DetailedCharacter = () => {
   const { id } = useParams();
-  const characterInfo = selectCharacterInfo(Number(id));
+  const [characterInfo, setCharacterInfo] = useState();
+
+  const loadData = useCallback(async () => {
+    const character = await getCharacterById(id)
+    setCharacterInfo(character);
+  }, [id, setCharacterInfo]);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
   const { name, species, created, episode, status, gender, location, origin, image } = characterInfo || {};
 
@@ -31,7 +41,7 @@ const DetailedCharacter = ({ selectCharacterInfo }) => {
       </div>
       <div className="DetailedCharacter__card">
         <div className="DetailedCharacter__avatar">
-          <img className="DetailedCharacter__image" src={image} />
+          <img alt="avatar" className="DetailedCharacter__image" src={image} />
         </div>
         <div className="DetailedCharacter__content">
           <h1 className="DetailedCharacter__name">
@@ -68,12 +78,12 @@ const DetailedCharacter = ({ selectCharacterInfo }) => {
                 {location?.name}
               </TextField>
               <TextField label="First seen in:" className="DetailedCharacter__textField">
-                {episode[0]}
+                {episode?.[0]}
               </TextField>
             </div>
-            <div className="DetailedCharacrer__column">
+            <div className="DetailedCharacter__column">
               <TextField label="Episodes" className="DetailedCharacter__textField">
-                {episode.map(renderEpisode)}
+                {episode?.map(renderEpisode)}
               </TextField>
             </div>
           </div>
@@ -81,10 +91,6 @@ const DetailedCharacter = ({ selectCharacterInfo }) => {
       </div>
     </div>
   );
-};
-
-DetailedCharacter.propTypes = {
-  selectCharacterInfo: PropTypes.func.isRequired,
 };
 
 export default DetailedCharacter;
